@@ -1,4 +1,4 @@
-# Node-NRE (Named Entity Recognition) #
+# Node-NER (Named Entity Recognition) #
 
 Node-NER uses Stanford's JAVA NER package to tag the entities in the text, then parse the output to extract the entities by type.
 
@@ -15,7 +15,7 @@ Unzip anywhere, it doesn't matter.
 
 *Note: Don't forget to have your JRE up to date, and JAVA in your PATH.*
 
-You can make sure everything is set by opening a console, cd into the stanford-nre's directory then execute:
+You can make sure everything is set by opening a console, cd into the stanford-ner's directory then execute:
 	java -mx1500m -cp stanford-ner.jar edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers\english.all.3class.distsim.crf.ser.gz -textFile path-to-a-text-file.txt
 
 ### NPM Package ###
