@@ -13,8 +13,9 @@ function ner(options) {
 ner.prototype.fromFile = function(filename, callback) {
 	var scope = this;
 	var exec = require('child_process').exec;
-	exec('java -mx1500m -cp '+path.normalize(this.options.install_path+'/'+this.options.jar)+' edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier '+path.normalize(this.options.install_path+'/classifiers/'+this.options.classifier)+' -textFile '+filename, function(error, stdout, stderr) {
-		if (error) {
+	exec('java -mx1500m -cp '+path.normalize(this.options.install_path+'/'+this.options.jar)+' edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier '+path.normalize(this.options.install_path+'/classifiers/'+this.options.classifier)+' -textFile '+filename,
+		{maxBuffer : 500 * 1024}, function(error, stdout, stderr) {
+			if (error) {
 			console.log("ERROR:", error);
 			return false;
 		}
