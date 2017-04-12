@@ -82,6 +82,17 @@ ner.prototype.parse = function(parsed, callback) {
 		prevEntity = tagged[i].t;
 	}
 	
+	// Check entityBuffer one last time to make sure we account for the last term
+	if (entityBuffer.length>0) {
+		// There was! We save the entity
+		if (!entities.hasOwnProperty(prevEntity)) {
+			entities[prevEntity] = [];
+		}
+		entities[prevEntity].push(entityBuffer.join(' '));
+		// Now we set the buffer
+		entityBuffer = [];
+	}
+	
 	
 	callback(entities);
 }
